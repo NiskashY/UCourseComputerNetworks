@@ -192,8 +192,11 @@ CMakeFiles/Client.dir/main.cpp.o
  /usr/include/c++/12.2.1/bits/ostream.tcc
  /usr/include/c++/12.2.1/istream
  /usr/include/c++/12.2.1/bits/istream.tcc
+ /usr/include/c++/12.2.1/cstring
  /usr/include/string.h
  /usr/include/strings.h
+ /usr/include/c++/12.2.1/sstream
+ /usr/include/c++/12.2.1/bits/sstream.tcc
  /usr/include/c++/12.2.1/utility
  /usr/include/c++/12.2.1/bits/stl_relops.h
  /usr/include/sys/socket.h

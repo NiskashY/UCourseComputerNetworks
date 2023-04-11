@@ -219,4 +219,14 @@ CMakeFiles/Server.dir/main.cpp.o
  /usr/include/bits/getopt_core.h
  /usr/include/bits/unistd_ext.h
  /usr/include/linux/close_range.h
+ /usr/include/c++/12.2.1/cstring
+ /usr/include/string.h
+ /usr/include/strings.h
+ /home/mint/GitRepos/UCourseComputerNetworks/Lab1/server/combinatorics.h
+ /usr/include/c++/12.2.1/vector
+ /usr/include/c++/12.2.1/bits/stl_uninitialized.h
+ /usr/include/c++/12.2.1/bits/stl_vector.h
+ /usr/include/c++/12.2.1/bits/stl_bvector.h
+ /usr/include/c++/12.2.1/bits/vector.tcc
+ /usr/include/c++/12.2.1/array
 

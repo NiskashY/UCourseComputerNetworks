@@ -217,8 +217,32 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
   /usr/include/bits/getopt_posix.h \
   /usr/include/bits/getopt_core.h \
   /usr/include/bits/unistd_ext.h \
-  /usr/include/linux/close_range.h
+  /usr/include/linux/close_range.h \
+  /usr/include/c++/12.2.1/cstring \
+  /usr/include/string.h \
+  /usr/include/strings.h \
+  /home/mint/GitRepos/UCourseComputerNetworks/Lab1/server/combinatorics.h \
+  /usr/include/c++/12.2.1/vector \
+  /usr/include/c++/12.2.1/bits/stl_uninitialized.h \
+  /usr/include/c++/12.2.1/bits/stl_vector.h \
+  /usr/include/c++/12.2.1/bits/stl_bvector.h \
+  /usr/include/c++/12.2.1/bits/vector.tcc \
+  /usr/include/c++/12.2.1/array
 
+
+/usr/include/c++/12.2.1/array:
+
+/usr/include/c++/12.2.1/bits/vector.tcc:
+
+/usr/include/c++/12.2.1/bits/stl_bvector.h:
+
+/usr/include/c++/12.2.1/bits/stl_vector.h:
+
+/usr/include/c++/12.2.1/bits/stl_uninitialized.h:
+
+/usr/include/strings.h:
+
+/usr/include/c++/12.2.1/cstring:
 
 /usr/include/bits/unistd_ext.h:
 
@@ -321,6 +345,8 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 /usr/include/c++/12.2.1/initializer_list:
 
 /usr/include/c++/12.2.1/bits/range_access.h:
+
+/usr/include/c++/12.2.1/vector:
 
 /usr/include/c++/12.2.1/string:
 
@@ -506,6 +532,8 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 
 /usr/include/bits/types/mbstate_t.h:
 
+/home/mint/GitRepos/UCourseComputerNetworks/Lab1/server/combinatorics.h:
+
 /usr/include/bits/floatn-common.h:
 
 /usr/include/asm-generic/bitsperlong.h:
@@ -645,6 +673,8 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 /usr/include/c++/12.2.1/backward/binders.h:
 
 /usr/include/c++/12.2.1/bits/stl_pair.h:
+
+/usr/include/string.h:
 
 /usr/include/c++/12.2.1/debug/debug.h:
 

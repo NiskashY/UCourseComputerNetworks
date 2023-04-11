@@ -2,6 +2,8 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
+#include <cstring>
+#include "combinatorics.h"
 
 class Server {
 public:
@@ -33,19 +35,56 @@ public:
         close(socket_fd);
     }
 
-    [[noreturn]] void run() const {
+    long long Parse(const char* request, int request_size, int& i) const {
+        int x = 0;
+        while (i + 1 < request_size && request[i] != ' ') {
+            x *= 10;
+            x += request[i] - '0';
+            i += 1;
+        }
+        i += 1;
+        return x;
+    }
+
+    [[noreturn]] void run() {
+        Combinatorics comb;
+
         while (true) {
             // accept wait until request from client is queued
             int new_socket = accept(socket_fd,  (sockaddr*)(&server_address), (socklen_t*)&address_length);
 
-            if (new_socket > 0) {
+            if (new_socket < 0) {
                 close(new_socket);
                 throw std::runtime_error("Error while Accepting on socket");
             }
 
-            std::string hello_from_server{"Hello from server"};
-            send(new_socket, hello_from_server.c_str(), hello_from_server.size(), 0); // 0 - no flags specified
-            std::cout << "Hello message sent: Server -> Client" << std::endl;
+            // TODO: read from socket -> compute;
+
+            // first client send length of request (max 2 * 18 , second -> send
+
+            const int MAX_NUMBER_SIZE = 20;
+            char data_size[MAX_NUMBER_SIZE];
+            read(new_socket, data_size, MAX_NUMBER_SIZE);
+            send(new_socket, "ok", strlen("ok"), 0);    // ensure client that information is accepted
+
+            int request_size = atoi(data_size) + 1;
+            char request[request_size];
+            read(new_socket, request, request_size);
+
+            int i = 0;
+            auto m = Parse(request, request_size, i);
+            auto n = Parse(request, request_size, i);
+
+            std::cout << "Request: " << m << ' ' << n << " | ";
+            std::string response{};
+            try {
+                response = std::to_string(comb.getSumOfFactorials(n, m));
+            } catch (std::out_of_range& e) {
+                response = e.what();
+            }
+
+            send(new_socket, response.c_str(), response.size(), 0); // 0 - no flags specified
+            std::cout << "Response: " << response << std::endl;
         }
     }
 

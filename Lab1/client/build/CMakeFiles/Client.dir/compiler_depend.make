@@ -191,8 +191,11 @@ CMakeFiles/Client.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
   /usr/include/c++/12.2.1/bits/ostream.tcc \
   /usr/include/c++/12.2.1/istream \
   /usr/include/c++/12.2.1/bits/istream.tcc \
+  /usr/include/c++/12.2.1/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/c++/12.2.1/sstream \
+  /usr/include/c++/12.2.1/bits/sstream.tcc \
   /usr/include/c++/12.2.1/utility \
   /usr/include/c++/12.2.1/bits/stl_relops.h \
   /usr/include/sys/socket.h \
@@ -259,6 +262,8 @@ CMakeFiles/Client.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 
 /usr/include/strings.h:
 
+/usr/include/c++/12.2.1/cstring:
+
 /usr/include/c++/12.2.1/bits/ostream.tcc:
 
 /usr/include/c++/12.2.1/bits/basic_ios.tcc:
@@ -306,6 +311,8 @@ CMakeFiles/Client.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 /usr/include/bits/types/sigset_t.h:
 
 /usr/include/bits/byteswap.h:
+
+/usr/include/c++/12.2.1/sstream:
 
 /usr/include/stdlib.h:
 
@@ -422,6 +429,8 @@ CMakeFiles/Client.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 /usr/include/c++/12.2.1/cstdint:
 
 /usr/include/bits/wordsize.h:
+
+/usr/include/c++/12.2.1/bits/sstream.tcc:
 
 /usr/include/c++/12.2.1/bits/stl_iterator_base_types.h:
 
