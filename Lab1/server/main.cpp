@@ -1,8 +1,10 @@
 #include <iostream>
+#include <stdexcept>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
 #include <cstring>
+
 #include "combinatorics.h"
 
 class Server {
@@ -46,6 +48,12 @@ public:
         return x;
     }
 
+    int32_t GetNumber(const int& new_socket) const {
+        int32_t getted_number = 0;
+        read(new_socket, &getted_number, sizeof(getted_number));
+        return (int32_t)ntohl(getted_number);   // convert from internet type order to host type
+    }
+
     [[noreturn]] void run() {
         Combinatorics comb;
 
@@ -58,33 +66,28 @@ public:
                 throw std::runtime_error("Error while Accepting on socket");
             }
 
-            // TODO: read from socket -> compute;
+            // TODO: htonl -> to send
+            //       ntohl -> to read
 
-            // first client send length of request (max 2 * 18 , second -> send
+            // read first number 
+            // read second number
+            // send (first! + second!) % kMod
 
-            const int MAX_NUMBER_SIZE = 20;
-            char data_size[MAX_NUMBER_SIZE];
-            read(new_socket, data_size, MAX_NUMBER_SIZE);
+            auto received_m = GetNumber(new_socket);
+            // TODO: is i need to inform client ??
             send(new_socket, "ok", strlen("ok"), 0);    // ensure client that information is accepted
+            auto received_n = GetNumber(new_socket);
 
-            int request_size = atoi(data_size) + 1;
-            char request[request_size];
-            read(new_socket, request, request_size);
-
-            int i = 0;
-            auto m = Parse(request, request_size, i);
-            auto n = Parse(request, request_size, i);
-
-            std::cout << "Request: " << m << ' ' << n << " | ";
-            std::string response{};
+            int32_t response = 0;
             try {
-                response = std::to_string(comb.getSumOfFactorials(n, m));
+                response = htonl(comb.getSumOfFactorials(received_n, received_m));
             } catch (std::out_of_range& e) {
-                response = e.what();
+                std::cerr << '[' << e.what() << "] ";
             }
-
-            send(new_socket, response.c_str(), response.size(), 0); // 0 - no flags specified
-            std::cout << "Response: " << response << std::endl;
+           
+            std::cout << "Request: " << received_m << ' ' << received_n << ' ';
+            std::cout << "Response: " << ntohl(response) << std::endl;
+            send(new_socket, &response, sizeof(response), 0);
         }
     }
 
@@ -95,6 +98,8 @@ private:
     sockaddr_in server_address{}; // server information
     const int address_length = sizeof(server_address);
     int socket_fd = 0;           // file descriptor
+    const std::string kRequestMsg = "Request:";
+    const std::string kResponseMsg = "Response:";
 };
 
 

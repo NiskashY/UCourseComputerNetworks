@@ -6,9 +6,6 @@
 #include <vector>
 #include <array>
 
-
-
-
 class Combinatorics {
 public:
     Combinatorics() {
@@ -27,35 +24,35 @@ public:
         }
     }
 
-    long long BinPow(long long a, long long x) {
+    int32_t BinPow(int32_t a, int32_t x) {
         if (x == 0) {
             return 1;
         } else if (x & 1) {
             return (BinPow(a, x - 1) * a) % kMod ;
         } else {
-            long long tmp = BinPow(a, x / 2);
+            int32_t tmp = BinPow(a, x / 2);
             return (tmp * tmp) % kMod;
         }
     }
 
-    long long C(int n, int r) {
+    int32_t C(int n, int r) {
         auto invdenominator = (invfact[r] * invfact[n - r]) % kMod;
         return (factorial[n] * invdenominator) % kMod;
     }
 
-    long long getFactorial(long long n) {
+    int32_t getFactorial(int32_t n) {
         if (n < 0 || n >= kMaxN) {
             throw std::out_of_range("Invalid range");
         }
         return factorial[n];
     }
 
-    long long getSumOfFactorials(long long n, long long m) {
+    int32_t getSumOfFactorials(int32_t n, int32_t m) {
         return (getFactorial(n) + getFactorial(m)) % kMod;
     }
 
 private:
     static const int kMaxN = 1e6, kMod = 1e9 + 7;
-    std::vector<long long> factorial;
-    std::vector<long long> invfact;
+    std::vector<int32_t> factorial;
+    std::vector<int32_t> invfact;
 };

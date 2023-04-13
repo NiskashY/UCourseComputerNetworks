@@ -35,30 +35,27 @@ public:
         std::cout << "Hello message sent: Client -> Server" << '\n';
     }
 
-    void sendMessage(int m, int n) const {
+    void sendMessage(int m, int n) {
         // create message
-        auto final_request = std::to_string(m), str_n = std::to_string(n);
-        auto final_size = std::to_string(final_request.size() + str_n.size() + 1);
-        final_request += " " + str_n;
+        static char ensure[2];
+        static int32_t received_answer = 0;  // variable that stores sum of factorials 
+       
+        m = htonl(m), n = htonl(n);
 
-        const int number_max_len = 20;
-        char buffer[number_max_len];
+        send(client_fd, &m, sizeof(m), 0);
+        read(client_fd, ensure, 2);
+        send(client_fd, &n, sizeof(n), 0);
+        
+        read(client_fd, &received_answer, sizeof(received_answer));
 
-        send(client_fd, final_size.c_str(), final_size.size(), 0);       // first
-        read(client_fd, buffer, number_max_len);    // ensure that request is send
-        send(client_fd, final_request.c_str(), final_request.size(), 0); // second
-
-
-        memset(buffer, 0, number_max_len);
-        // accept response
-        read(client_fd, buffer, number_max_len);
-        std::cout << buffer << std::endl;
+        received_answer = ntohl(received_answer);
+        std::cout << received_answer << std::endl;
+        return;
     }
 
 private:
     const int kPort = 0;
 
-    char ensure[2] = "";
     const std::string kIpAddress;
     sockaddr_in server_address{}; // server information
     int client_fd = 0;            // socket information
@@ -67,9 +64,11 @@ private:
 
 int main() {
     const std::string& kMessage = "Input two non-negative integers -> get sum of factorials\nelse -> quit";
+    const std::string& kInputMsg = "Input: ";
 
     std::cout << kMessage << std::endl;
     while (true) {
+        std::cout << std::endl << kInputMsg;
         std::string request;
         std::getline(std::cin, request);
         std::stringstream input(request);
