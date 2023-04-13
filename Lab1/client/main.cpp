@@ -11,7 +11,8 @@
 class Client {
 public:
     Client(const int& kPort_ = 9984,
-           std::string kIpAddress_ = "127.0.0.1") : kPort(kPort_), kIpAddress(std::move(kIpAddress_)) {
+           std::string kIpAddress_ = "127.0.0.1") : kPort(kPort_), kIpAddress(std::move(kIpAddress_))
+    {
         client_fd = socket(AF_INET, SOCK_STREAM, 0);
         if (client_fd < 0) {
             throw std::runtime_error("Cant create socket descriptor.");
@@ -32,7 +33,6 @@ public:
 
     void sendMessage(const std::string& message) const {
         send(client_fd, message.c_str(), message.size(), 0);
-        std::cout << "Hello message sent: Client -> Server" << '\n';
     }
 
     void sendMessage(int m, int n) {
@@ -89,7 +89,6 @@ int main() {
             }
         }
     }
-
 
     return 0;
 }

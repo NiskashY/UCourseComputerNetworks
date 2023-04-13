@@ -6,6 +6,8 @@
 #include <cstring>
 
 #include "combinatorics.h"
+#define ENSURE_MSG_LEN 2
+#define FLAGS 0
 
 class Server {
 public:
@@ -37,17 +39,6 @@ public:
         close(socket_fd);
     }
 
-    long long Parse(const char* request, int request_size, int& i) const {
-        int x = 0;
-        while (i + 1 < request_size && request[i] != ' ') {
-            x *= 10;
-            x += request[i] - '0';
-            i += 1;
-        }
-        i += 1;
-        return x;
-    }
-
     int32_t GetNumber(const int& new_socket) const {
         int32_t getted_number = 0;
         read(new_socket, &getted_number, sizeof(getted_number));
@@ -66,16 +57,8 @@ public:
                 throw std::runtime_error("Error while Accepting on socket");
             }
 
-            // TODO: htonl -> to send
-            //       ntohl -> to read
-
-            // read first number 
-            // read second number
-            // send (first! + second!) % kMod
-
             auto received_m = GetNumber(new_socket);
-            // TODO: is i need to inform client ??
-            send(new_socket, "ok", strlen("ok"), 0);    // ensure client that information is accepted
+            send(new_socket, "ok", ENSURE_MSG_LEN, FLAGS);    // ensure client that information is accepted
             auto received_n = GetNumber(new_socket);
 
             int32_t response = 0;
@@ -85,13 +68,25 @@ public:
                 std::cerr << '[' << e.what() << "] ";
             }
            
-            std::cout << "Request: " << received_m << ' ' << received_n << ' ';
-            std::cout << "Response: " << ntohl(response) << std::endl;
+            ShowMessage(kRequestMsg, received_m, received_n, kResponseMsg, ntohl(response));
+
             send(new_socket, &response, sizeof(response), 0);
         }
     }
 
-private:
+private: // functions
+    template <class T>
+    void ShowMessage(const T& message) {
+        std::cout << message << std::endl;
+    }
+
+    template <class T, class... Args>
+    void ShowMessage(const T& message, Args... args) {
+        std::cout << message << ' ';  
+        ShowMessage(args...);
+    }
+
+private: // variables 
     const int PORT = 9984;      // TODO: возможность задать автоматически
     const int MAX_QUERIES = 3;
 
