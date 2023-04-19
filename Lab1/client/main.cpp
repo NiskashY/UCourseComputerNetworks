@@ -37,24 +37,19 @@ public:
 
     void sendMessage(int m, int n) {
         // create message
-        static char ensure[2];
-        static int32_t received_answer = 0;  // variable that stores sum of factorials 
-       
         m = htonl(m), n = htonl(n);
 
         send(client_fd, &m, sizeof(m), 0);
-        read(client_fd, ensure, 2);
         send(client_fd, &n, sizeof(n), 0);
-        
         read(client_fd, &received_answer, sizeof(received_answer));
 
         received_answer = ntohl(received_answer);
         std::cout << received_answer << std::endl;
-        return;
     }
 
 private:
     const int kPort = 0;
+    int32_t received_answer = 0;  // variable that stores sum of factorials
 
     const std::string kIpAddress;
     sockaddr_in server_address{}; // server information
@@ -66,6 +61,7 @@ int main() {
     const std::string& kMessage = "Input two non-negative integers -> get sum of factorials\nelse -> quit";
     const std::string& kInputMsg = "Input: ";
 
+    Client client;
     std::cout << kMessage << std::endl;
     while (true) {
         std::cout << std::endl << kInputMsg;
@@ -82,7 +78,6 @@ int main() {
             break;
         } else {
             try {
-                Client client;
                 client.sendMessage(m, n);
             } catch (std::runtime_error& e) {
                 std::cout << e.what() << std::endl;

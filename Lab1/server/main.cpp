@@ -1,13 +1,12 @@
 #include <iostream>
 #include <stdexcept>
+
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
-#include <cstring>
+#include <arpa/inet.h>
 
 #include "combinatorics.h"
-#define ENSURE_MSG_LEN 2
-#define FLAGS 0
 
 class Server {
 public:
@@ -32,45 +31,66 @@ public:
             throw std::runtime_error("Cant listen to socket");
         }
 
-        std::cout << "Listening!" << std::endl;
+        std::cout << "Listening! Port: " << PORT << " IpAddress: localhost" << std::endl;
     }
 
     ~Server() {
         close(socket_fd);
     }
 
-    int32_t GetNumber(const int& new_socket) const {
+    int32_t GetNumber(const int& new_socket, const std::string& client_readable_ip) const {
         int32_t getted_number = 0;
-        read(new_socket, &getted_number, sizeof(getted_number));
+        int retval = read(new_socket, &getted_number, sizeof(getted_number));
+        if (!retval) {
+            throw std::runtime_error("connection lost with: " + client_readable_ip);
+        }
         return (int32_t)ntohl(getted_number);   // convert from internet type order to host type
+    }
+
+    bool IsSocketConnected() const {
+        int error = 0; socklen_t error_len = sizeof(int);
+        int retval = getsockopt(socket_fd, SOL_SOCKET, SO_ERROR, &error, &error_len);
+        return !retval && !error;
     }
 
     [[noreturn]] void run() {
         Combinatorics comb;
 
         while (true) {
-            // accept wait until request from client is queued
-            int new_socket = accept(socket_fd,  (sockaddr*)(&server_address), (socklen_t*)&address_length);
-
+            int new_socket = accept(socket_fd, (sockaddr*)(&server_address), (socklen_t*)&address_length);
             if (new_socket < 0) {
                 close(new_socket);
                 throw std::runtime_error("Error while Accepting on socket");
             }
 
-            auto received_m = GetNumber(new_socket);
-            send(new_socket, "ok", ENSURE_MSG_LEN, FLAGS);    // ensure client that information is accepted
-            auto received_n = GetNumber(new_socket);
+            std::string client_readable_ip(INET_ADDRSTRLEN, '\0');
+            inet_ntop(server_address.sin_family,
+                                  (sockaddr*)&server_address.sin_addr,
+                                  client_readable_ip.data(),
+                                  client_readable_ip.size());
 
-            int32_t response = 0;
-            try {
-                response = htonl(comb.getSumOfFactorials(received_n, received_m));
-            } catch (std::out_of_range& e) {
-                std::cerr << '[' << e.what() << "] ";
+            std::cout << "Connection established with: " + client_readable_ip << std::endl;
+
+            while (true) {
+                try {
+                    auto received_m = GetNumber(new_socket, client_readable_ip);
+                    auto received_n = GetNumber(new_socket, client_readable_ip);
+
+                    int32_t response = 0;
+                    try {
+                        response = htonl(comb.getSumOfFactorials(received_n, received_m));
+                    } catch (std::out_of_range &e) {
+                        std::cerr << '[' << e.what() << "] ";
+                    }
+
+                    ShowMessage(kRequestMsg, received_m, received_n, kResponseMsg, ntohl(response));
+                    send(new_socket, &response, sizeof(response), 0);
+                } catch (std::runtime_error& e) {
+                    // connection lost
+                    std::cout << e.what() << std::endl;
+                    break;
+                }
             }
-           
-            ShowMessage(kRequestMsg, received_m, received_n, kResponseMsg, ntohl(response));
-
-            send(new_socket, &response, sizeof(response), 0);
         }
     }
 
