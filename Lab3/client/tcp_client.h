@@ -75,4 +75,3 @@ private:
     sockaddr_in server_address{}; // server information
     int client_fd = 0;            // socket information
 };
-

@@ -1,7 +1,12 @@
 #pragma once
+
+// multithreading
+#include <thread>
+#include <atomic>
+
 // custom files
-#include "combinatorics.h"
 #include "students.h"
+#include "log.h"
 
 // socket programing
 #include <sys/socket.h>
@@ -36,7 +41,7 @@ public:
             throw std::runtime_error("Cant listen to socket");
         }
 
-        ShowMessage("Listening! Port:", PORT, "IpAddress: localhost");
+        log.ShowMessage("\nListening! Port:", PORT, "IpAddress: localhost");
     }
 
     ~Server() {
@@ -65,10 +70,48 @@ public:
         return convertStringJson(buffer);
     }
 
-    [[noreturn]] void run() {
-        Combinatorics comb;
-        students.addStudent(students.createStudent());
+    auto ShowMenu(const auto& menu) -> std::string {
+        for (auto item : menu) {
+            std::cout << item << std::endl;
+        }
+        std::string choice;
+        std::cout << "Make a choice: ";
+        std::getline(std::cin, choice);
+        return choice;
+    }
 
+    void ShowAppearance() {
+        while (true) {
+            const std::vector<const char *> menu = {
+                    "1 - Show current students",
+                    "2 - Add one more student",
+                    "3 - Remove one student",
+                    "4 - Show active clients",
+                    "else - exit"
+            };
+            // TODO: thread
+            // TODO: show menu
+            system("clear");
+            auto choice = ShowMenu(menu);
+            if (choice == "1") {
+                int index = 0;
+                students.visitor([&]<class T>(T& item) {
+                    std::cout << '\n' << ++index << ".\n" << item << '\n';
+                });
+            } else if (choice == "2") {
+                students.addStudent(students.createStudent());
+            } else if (choice == "3") {
+
+            } else if (choice == "4") {
+
+            } else {
+                break;  // TODO: set atomic variable to true
+            }
+            std::getline(std::cin, choice); // ~ system("pause");
+        }
+    }
+
+    [[noreturn]] void ServerCommunication() {
         while (true) {
             int new_socket = accept(socket_fd, (sockaddr*)(&server_address), (socklen_t*)&address_length);
             if (new_socket < 0) {
@@ -81,44 +124,43 @@ public:
                       (sockaddr*)&server_address.sin_addr,
                       client_readable_ip.data(),
                       client_readable_ip.size());
+            while (!client_readable_ip.empty() && client_readable_ip.back() == '\0') {
+                client_readable_ip.pop_back();
+            }
 
-            ShowMessage("Connection established with: " + client_readable_ip);
+            log.ShowMessage("Connection established with: " + client_readable_ip);
 
             while (true) {
                 try {
                     auto received_mark = ReadJson(new_socket, client_readable_ip);
                     auto response = students.findWithoutMark(received_mark["mark"].asInt());
 
-                    ShowMessage(kReqSep, kRequestMsg, received_mark.toStyledString());
-                    ShowMessage(kLineSep, kResponseMsg, response.toStyledString(), kReqSep);
+                    log.ShowMessage(Log::kReqSep, Log::kRequestMsg, received_mark.toStyledString(),
+                                    Log::kLineSep, Log::kResponseMsg, response.toStyledString(), Log::kReqSep);
 
                     auto rsp_msg = convertJsonString(response);
                     send(new_socket, rsp_msg.data(), rsp_msg.size(), 0);
                 } catch (std::runtime_error& e) {
                     // connection lost
-                    ShowMessage(e.what());
+                    log.ShowMessage(e.what());
                     break;
                 }
             }
         }
     }
 
+
+    void run() {
+        std::thread appearance_thread(&Server::ShowAppearance, this);
+        std::thread server_communication_thread(&Server::ServerCommunication, this);
+
+        appearance_thread.join();
+        server_communication_thread.join();
+    }
+
 private: // required for messages
-    template <class T>
-    void ShowMessage(const T& message) {
-        std::cout << message << std::endl;
-    }
 
-    template <class T, class... Args>
-    void ShowMessage(const T& message, Args... args) {
-        std::cout << message << ' ';
-        ShowMessage(args...);
-    }
-
-    const char * const kReqSep      = "\n==============\n";
-    const char * const kLineSep     = "\n--------------\n";
-    const char * const kRequestMsg  = "Request:\n";
-    const char * const kResponseMsg = "Response:\n";
+    Log log;
 
 private: // variables
     const int PORT = 9984;      // TODO: возможность задать автоматически
@@ -128,6 +170,7 @@ private: // variables
     const int address_length = sizeof(server_address);
     int socket_fd = 0;           // file descriptor
 
+    // TODO: thread-safety variable
     Students students;   // TODO: хранить сразу в JsonCpp
     char buffer[50];    // 50 -> size of a buffer
 };

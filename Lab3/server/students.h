@@ -7,6 +7,12 @@
 
 #define NAME_TO_STRING(x) #x
 
+template <class T, class U>
+static void Input(U hint, T& val) {
+    std::cout << hint << ' ';
+    std::cin >> val;
+}
+
 class Students {
 public:
     struct Student {
@@ -17,7 +23,7 @@ public:
         int group_number = 0;
         int scholarship = 0;
 
-        std::array<int, kSubjectCount> subjects; 
+        std::array<int, kSubjectCount> subjects{};
 
         auto toJson() -> Json::Value {
             Json::Value root;
@@ -33,11 +39,6 @@ public:
 
     Student createStudent() const {
         Student tmp;
-
-        auto Input = [&]<class T>(auto hint, T& val) {
-            std::cout << hint << ' ';
-            std::cin >> val;
-        };
 
         Input("Input name:", tmp.name); 
         Input("Input group:", tmp.group_number);
@@ -79,6 +80,25 @@ public:
         return root;
     }
 
+    template <class T>
+    void visitor(T lambda) {
+        if (data.empty()) {
+            lambda("No one exists");
+        }
+        for (int i = 0; i < (int)data.size(); ++i) {
+            lambda(data[i]);
+        }
+    }
+
 private:
     std::vector<Student> data; // TODO: хранить сразу в JsonCpp
 };
+
+
+std::ostream& operator<<(std::ostream& out, const Students::Student& student) {
+    std::cout << NAME_TO_STRING(name) << ": " << student.name << '\n';
+    std::cout << NAME_TO_STRING(group_number) << ": " << student. group_number << '\n';
+    for (int i = 0; i < Students::Student::kSubjectCount; ++i) {
+        std::cout << Students::Student::subjects_names[i] << ": " << student.subjects[i] << '\n';
+    }
+}

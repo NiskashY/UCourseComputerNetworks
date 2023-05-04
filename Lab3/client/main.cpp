@@ -27,7 +27,7 @@ int main() {
                     std::cout << "no students in the database!" << std::endl;
                 } else {
                     for (auto &item: response) {
-                        std::cout << item.toStyledString();
+                        std::cout << item.toStyledString(); // TODO: compact
                     }
                 }
             } catch (std::runtime_error& e) {

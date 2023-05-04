@@ -3,7 +3,7 @@ project(Server)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Server main.cpp combinatorics.h tcp_server.h)
+add_executable(Server main.cpp combinatorics.h tcp_server.h log.h)
 #--------------JSONCPP------------------
 
 set(JSON_INC_PATH /home/mint/GitRepos/vcpkg/packages/jsoncpp_x64-osx/include)

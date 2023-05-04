@@ -191,6 +191,7 @@ CMakeFiles/Client.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
   /usr/include/c++/12.2.1/bits/ostream.tcc \
   /usr/include/c++/12.2.1/istream \
   /usr/include/c++/12.2.1/bits/istream.tcc \
+  /home/mint/GitRepos/UCourseComputerNetworks/Lab3/client/tcp_client.h \
   /usr/include/c++/12.2.1/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
@@ -424,6 +425,10 @@ CMakeFiles/Client.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 
 /usr/include/c++/12.2.1/bits/invoke.h:
 
+/usr/include/c++/12.2.1/vector:
+
+/usr/include/json/forwards.h:
+
 /usr/include/pthread.h:
 
 /usr/include/c++/12.2.1/x86_64-pc-linux-gnu/bits/gthr-default.h:
@@ -505,6 +510,8 @@ CMakeFiles/Client.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 /usr/include/gnu/stubs.h:
 
 /usr/include/c++/12.2.1/bits/ios_base.h:
+
+/home/mint/GitRepos/UCourseComputerNetworks/Lab3/client/tcp_client.h:
 
 /usr/include/stdc-predef.h:
 
@@ -661,10 +668,6 @@ CMakeFiles/Client.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 /usr/include/json/allocator.h:
 
 /usr/include/c++/12.2.1/bits/erase_if.h:
-
-/usr/include/json/forwards.h:
-
-/usr/include/c++/12.2.1/vector:
 
 /usr/include/c++/12.2.1/initializer_list:
 
