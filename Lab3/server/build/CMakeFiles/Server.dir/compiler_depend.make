@@ -192,6 +192,24 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
   /usr/include/c++/12.2.1/istream \
   /usr/include/c++/12.2.1/bits/istream.tcc \
   /home/mint/GitRepos/UCourseComputerNetworks/Lab3/server/tcp_server.h \
+  /usr/include/c++/12.2.1/unordered_map \
+  /usr/include/c++/12.2.1/ext/aligned_buffer.h \
+  /usr/include/c++/12.2.1/bits/hashtable.h \
+  /usr/include/c++/12.2.1/bits/hashtable_policy.h \
+  /usr/include/c++/12.2.1/tuple \
+  /usr/include/c++/12.2.1/bits/uses_allocator.h \
+  /usr/include/c++/12.2.1/bits/enable_special_members.h \
+  /usr/include/c++/12.2.1/bits/node_handle.h \
+  /usr/include/c++/12.2.1/bits/unordered_map.h \
+  /usr/include/c++/12.2.1/bits/erase_if.h \
+  /usr/include/c++/12.2.1/mutex \
+  /usr/include/c++/12.2.1/bits/chrono.h \
+  /usr/include/c++/12.2.1/ratio \
+  /usr/include/c++/12.2.1/limits \
+  /usr/include/c++/12.2.1/ctime \
+  /usr/include/c++/12.2.1/bits/parse_numbers.h \
+  /usr/include/c++/12.2.1/bits/std_mutex.h \
+  /usr/include/c++/12.2.1/bits/unique_lock.h \
   /usr/include/c++/12.2.1/thread \
   /usr/include/c++/12.2.1/stop_token \
   /usr/include/c++/12.2.1/atomic \
@@ -221,18 +239,10 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
   /usr/include/asm/unistd.h \
   /usr/include/asm/unistd_64.h \
   /usr/include/bits/syscall.h \
-  /usr/include/c++/12.2.1/bits/std_mutex.h \
   /usr/include/c++/12.2.1/bits/std_thread.h \
-  /usr/include/c++/12.2.1/tuple \
-  /usr/include/c++/12.2.1/bits/uses_allocator.h \
   /usr/include/c++/12.2.1/bits/unique_ptr.h \
   /usr/include/c++/12.2.1/semaphore \
   /usr/include/c++/12.2.1/bits/semaphore_base.h \
-  /usr/include/c++/12.2.1/bits/chrono.h \
-  /usr/include/c++/12.2.1/ratio \
-  /usr/include/c++/12.2.1/limits \
-  /usr/include/c++/12.2.1/ctime \
-  /usr/include/c++/12.2.1/bits/parse_numbers.h \
   /usr/include/c++/12.2.1/bits/atomic_timed_wait.h \
   /usr/include/c++/12.2.1/bits/this_thread_sleep.h \
   /usr/include/sys/time.h \
@@ -252,7 +262,6 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
   /usr/include/c++/12.2.1/bits/shared_ptr.h \
   /usr/include/c++/12.2.1/bits/shared_ptr_base.h \
   /usr/include/c++/12.2.1/bits/allocated_ptr.h \
-  /usr/include/c++/12.2.1/ext/aligned_buffer.h \
   /usr/include/c++/12.2.1/ext/concurrence.h \
   /usr/include/c++/12.2.1/bits/shared_ptr_atomic.h \
   /usr/include/c++/12.2.1/backward/auto_ptr.h \
@@ -271,10 +280,8 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
   /usr/include/c++/12.2.1/array \
   /usr/include/c++/12.2.1/map \
   /usr/include/c++/12.2.1/bits/stl_tree.h \
-  /usr/include/c++/12.2.1/bits/node_handle.h \
   /usr/include/c++/12.2.1/bits/stl_map.h \
   /usr/include/c++/12.2.1/bits/stl_multimap.h \
-  /usr/include/c++/12.2.1/bits/erase_if.h \
   /usr/include/c++/12.2.1/vector \
   /usr/include/c++/12.2.1/bits/stl_vector.h \
   /usr/include/c++/12.2.1/bits/stl_bvector.h \
@@ -294,6 +301,7 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
   /usr/include/c++/12.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
   /usr/include/c++/12.2.1/bits/fstream.tcc \
   /usr/include/c++/12.2.1/chrono \
+  /home/mint/GitRepos/UCourseComputerNetworks/Lab3/server/thread_info.h \
   /usr/include/sys/socket.h \
   /usr/include/bits/types/struct_iovec.h \
   /usr/include/bits/socket.h \
@@ -334,8 +342,6 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 /usr/include/c++/12.2.1/bits/deque.tcc:
 
 /usr/include/c++/12.2.1/deque:
-
-/usr/include/json/json_features.h:
 
 /usr/include/arpa/inet.h:
 
@@ -399,13 +405,9 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 
 /usr/include/c++/12.2.1/bits/stl_vector.h:
 
-/usr/include/c++/12.2.1/bits/erase_if.h:
-
 /usr/include/c++/12.2.1/bits/stl_multimap.h:
 
 /usr/include/c++/12.2.1/bits/stl_map.h:
-
-/usr/include/c++/12.2.1/bits/node_handle.h:
 
 /usr/include/json/version.h:
 
@@ -415,9 +417,31 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 
 /usr/include/c++/12.2.1/bits/sstream.tcc:
 
+/usr/include/c++/12.2.1/bits/ranges_algobase.h:
+
+/usr/include/bits/socket_type.h:
+
+/usr/include/string.h:
+
+/usr/include/c++/12.2.1/backward/auto_ptr.h:
+
+/usr/include/c++/12.2.1/bits/shared_ptr_atomic.h:
+
+/usr/include/c++/12.2.1/bits/allocated_ptr.h:
+
+/usr/include/c++/12.2.1/bits/shared_ptr_base.h:
+
+/usr/include/c++/12.2.1/bits/shared_ptr.h:
+
+/usr/include/c++/12.2.1/bit:
+
 /usr/include/c++/12.2.1/bits/refwrap.h:
 
 /usr/include/c++/12.2.1/debug/debug.h:
+
+/usr/include/json/json_features.h:
+
+/usr/include/c++/12.2.1/bits/unordered_map.h:
 
 /usr/include/c++/12.2.1/bits/stl_pair.h:
 
@@ -431,6 +455,10 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 
 /usr/include/bits/wctype-wchar.h:
 
+/usr/include/c++/12.2.1/bits/ranges_uninitialized.h:
+
+/usr/include/c++/12.2.1/bits/cpp_type_traits.h:
+
 /usr/include/c++/12.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h:
 
 /usr/include/c++/12.2.1/x86_64-pc-linux-gnu/bits/c++config.h:
@@ -438,8 +466,6 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 /usr/include/ctype.h:
 
 /usr/include/bits/waitflags.h:
-
-/usr/include/c++/12.2.1/bits/shared_ptr.h:
 
 /usr/include/sys/select.h:
 
@@ -527,11 +553,17 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 
 /usr/include/bits/time64.h:
 
+/usr/include/c++/12.2.1/ext/concurrence.h:
+
+/usr/include/bits/stdlib-float.h:
+
 /usr/include/c++/12.2.1/bits/uses_allocator_args.h:
 
 /usr/include/bits/cpu-set.h:
 
 /usr/include/c++/12.2.1/compare:
+
+/usr/include/c++/12.2.1/bits/hashtable_policy.h:
 
 /usr/include/bits/types.h:
 
@@ -619,8 +651,6 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 
 /usr/include/c++/12.2.1/bits/locale_facets.tcc:
 
-/usr/include/c++/12.2.1/bit:
-
 /usr/include/bits/timesize.h:
 
 /usr/include/c++/12.2.1/typeinfo:
@@ -656,6 +686,8 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 /usr/include/c++/12.2.1/bits/max_size_type.h:
 
 /usr/include/bits/types/locale_t.h:
+
+/usr/include/c++/12.2.1/bits/unique_lock.h:
 
 /usr/include/c++/12.2.1/cctype:
 
@@ -737,7 +769,7 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 
 /usr/include/bits/types/struct___jmp_buf_tag.h:
 
-/usr/include/c++/12.2.1/bits/allocated_ptr.h:
+/home/mint/GitRepos/UCourseComputerNetworks/Lab3/server/thread_info.h:
 
 /usr/include/c++/12.2.1/bits/nested_exception.h:
 
@@ -767,6 +799,8 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 
 /usr/include/c++/12.2.1/string:
 
+/usr/include/c++/12.2.1/bits/erase_if.h:
+
 /usr/include/c++/12.2.1/sstream:
 
 /usr/include/c++/12.2.1/bits/range_access.h:
@@ -776,10 +810,6 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 /usr/include/c++/12.2.1/bits/std_abs.h:
 
 /usr/include/bits/xopen_lim.h:
-
-/usr/include/bits/stdlib-float.h:
-
-/usr/include/c++/12.2.1/ext/concurrence.h:
 
 /usr/include/c++/12.2.1/bits/basic_string.h:
 
@@ -867,11 +897,11 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 
 /usr/include/c++/12.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h:
 
-/usr/include/c++/12.2.1/bits/ranges_algobase.h:
-
 /usr/include/c++/12.2.1/bits/basic_ios.h:
 
 /usr/include/c++/12.2.1/bits/basic_ios.tcc:
+
+/usr/include/c++/12.2.1/mutex:
 
 /usr/include/c++/12.2.1/bits/ostream.tcc:
 
@@ -880,6 +910,26 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 /usr/include/json/config.h:
 
 /home/mint/GitRepos/UCourseComputerNetworks/Lab3/server/tcp_server.h:
+
+/usr/include/c++/12.2.1/unordered_map:
+
+/usr/include/c++/12.2.1/bits/hashtable.h:
+
+/usr/include/c++/12.2.1/tuple:
+
+/usr/include/c++/12.2.1/bits/enable_special_members.h:
+
+/usr/include/json/reader.h:
+
+/usr/include/c++/12.2.1/ctime:
+
+/usr/include/c++/12.2.1/bits/stl_tempbuf.h:
+
+/usr/include/sys/syscall.h:
+
+/usr/include/c++/12.2.1/bits/node_handle.h:
+
+/usr/include/c++/12.2.1/ratio:
 
 /usr/include/c++/12.2.1/thread:
 
@@ -892,6 +942,14 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 /usr/include/c++/12.2.1/cstdio:
 
 /usr/include/c++/12.2.1/bits/atomic_lockfree_defines.h:
+
+/usr/include/asm/errno.h:
+
+/usr/include/bits/stdint-uintn.h:
+
+/usr/include/c++/12.2.1/bits/parse_numbers.h:
+
+/usr/include/c++/12.2.1/bits/atomic_wait.h:
 
 /usr/include/json/json.h:
 
@@ -917,14 +975,6 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 
 /usr/include/bits/unistd_ext.h:
 
-/usr/include/c++/12.2.1/bits/stl_tempbuf.h:
-
-/usr/include/sys/syscall.h:
-
-/usr/include/json/reader.h:
-
-/usr/include/c++/12.2.1/ctime:
-
 /usr/include/bits/syscall.h:
 
 /usr/include/c++/12.2.1/clocale:
@@ -933,19 +983,7 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 
 /usr/include/c++/12.2.1/bits/std_thread.h:
 
-/usr/include/c++/12.2.1/tuple:
-
 /usr/include/c++/12.2.1/bits/unique_ptr.h:
-
-/usr/include/c++/12.2.1/ratio:
-
-/usr/include/asm/errno.h:
-
-/usr/include/bits/stdint-uintn.h:
-
-/usr/include/c++/12.2.1/bits/atomic_wait.h:
-
-/usr/include/c++/12.2.1/bits/parse_numbers.h:
 
 /usr/include/c++/12.2.1/bits/atomic_timed_wait.h:
 
@@ -956,17 +994,3 @@ CMakeFiles/Server.dir/main.cpp.o: /home/mint/GitRepos/UCourseComputerNetworks/La
 /usr/include/c++/12.2.1/bits/stl_uninitialized.h:
 
 /usr/include/c++/12.2.1/bits/stl_raw_storage_iter.h:
-
-/usr/include/c++/12.2.1/bits/shared_ptr_base.h:
-
-/usr/include/c++/12.2.1/bits/shared_ptr_atomic.h:
-
-/usr/include/bits/socket_type.h:
-
-/usr/include/string.h:
-
-/usr/include/c++/12.2.1/backward/auto_ptr.h:
-
-/usr/include/c++/12.2.1/bits/cpp_type_traits.h:
-
-/usr/include/c++/12.2.1/bits/ranges_uninitialized.h:

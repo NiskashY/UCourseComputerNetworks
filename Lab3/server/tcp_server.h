@@ -1,16 +1,20 @@
 #pragma once
 
+#include <unordered_map>
+
 // multithreading
+#include <mutex>
 #include <thread>
-#include <atomic>
 
 // custom files
 #include "students.h"
 #include "log.h"
+#include "thread_info.h"
 
 // socket programing
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <thread>
 #include <unistd.h>
 #include <arpa/inet.h>
 
@@ -42,6 +46,7 @@ public:
         }
 
         log.ShowMessage("\nListening! Port:", PORT, "IpAddress: localhost");
+        students.readFromFile();
     }
 
     ~Server() {
@@ -70,44 +75,59 @@ public:
         return convertStringJson(buffer);
     }
 
-    auto ShowMenu(const auto& menu) -> std::string {
-        for (auto item : menu) {
-            std::cout << item << std::endl;
-        }
-        std::string choice;
-        std::cout << "Make a choice: ";
-        std::getline(std::cin, choice);
-        return choice;
+
+    auto getClientIp() -> std::string {
+        std::string client_readable_ip(INET_ADDRSTRLEN, '\0');
+
+        inet_ntop(server_address.sin_family,
+                  (sockaddr*)&server_address.sin_addr,
+                  client_readable_ip.data(),
+                  client_readable_ip.size());
+
+        while (!client_readable_ip.empty() && client_readable_ip.back() == '\0') {
+            client_readable_ip.pop_back();
+        } 
+
+        return client_readable_ip;
     }
 
-    void ShowAppearance() {
+
+    void ProcessNewClientConnection(int new_socket, int port) {
+        auto client_readable_ip = getClientIp();
+
+        log.ShowMessage("Connection established with: " + client_readable_ip);
+        
+        {
+            std::lock_guard<std::mutex> lock(connects_mut);
+            std::thread::id id = std::this_thread::get_id();
+            connections_info[id] = ThreadInfo(id, port);
+        }
+
+
         while (true) {
-            const std::vector<const char *> menu = {
-                    "1 - Show current students",
-                    "2 - Add one more student",
-                    "3 - Remove one student",
-                    "4 - Show active clients",
-                    "else - exit"
-            };
-            // TODO: thread
-            // TODO: show menu
-            system("clear");
-            auto choice = ShowMenu(menu);
-            if (choice == "1") {
-                int index = 0;
-                students.visitor([&]<class T>(T& item) {
-                    std::cout << '\n' << ++index << ".\n" << item << '\n';
-                });
-            } else if (choice == "2") {
-                students.addStudent(students.createStudent());
-            } else if (choice == "3") {
+            try {
+                auto received_mark = ReadJson(new_socket, client_readable_ip);
+                Json::Value response;
+                {
+                    // TODO:
+                    const std::lock_guard<std::mutex> lock(students_mut);
+                    response = students.findWithoutMark(received_mark["mark"].asInt());
+                }
 
-            } else if (choice == "4") {
-
-            } else {
-                break;  // TODO: set atomic variable to true
+                log.ShowMessage(Log::kReqSep, Log::kRequestMsg, received_mark.toStyledString(),
+                                Log::kLineSep, Log::kResponseMsg, response.toStyledString(), Log::kReqSep);
+                auto rsp_msg = convertJsonString(response);
+                send(new_socket, rsp_msg.data(), rsp_msg.size(), 0);
+            } catch (std::runtime_error& e) {
+                // connection lost
+                log.ShowMessage(e.what());
+                break;
             }
-            std::getline(std::cin, choice); // ~ system("pause");
+        }
+
+        {
+            std::lock_guard<std::mutex> lock(connects_mut);
+            connections_info.erase(std::this_thread::get_id());
         }
     }
 
@@ -119,36 +139,66 @@ public:
                 throw std::runtime_error("Error while Accepting on socket");
             }
 
-            std::string client_readable_ip(INET_ADDRSTRLEN, '\0');
-            inet_ntop(server_address.sin_family,
-                      (sockaddr*)&server_address.sin_addr,
-                      client_readable_ip.data(),
-                      client_readable_ip.size());
-            while (!client_readable_ip.empty() && client_readable_ip.back() == '\0') {
-                client_readable_ip.pop_back();
-            }
-
-            log.ShowMessage("Connection established with: " + client_readable_ip);
-
-            while (true) {
-                try {
-                    auto received_mark = ReadJson(new_socket, client_readable_ip);
-                    auto response = students.findWithoutMark(received_mark["mark"].asInt());
-
-                    log.ShowMessage(Log::kReqSep, Log::kRequestMsg, received_mark.toStyledString(),
-                                    Log::kLineSep, Log::kResponseMsg, response.toStyledString(), Log::kReqSep);
-
-                    auto rsp_msg = convertJsonString(response);
-                    send(new_socket, rsp_msg.data(), rsp_msg.size(), 0);
-                } catch (std::runtime_error& e) {
-                    // connection lost
-                    log.ShowMessage(e.what());
-                    break;
-                }
-            }
-        }
+            std::thread new_client_connection(&Server::ProcessNewClientConnection, this, new_socket, htons(server_address.sin_port));
+            new_client_connection.detach();
+       }
     }
 
+    auto ShowMenu(const auto& menu) -> std::string {
+        for (auto item : menu) {
+            std::cout << item << std::endl;
+        }
+        std::string choice;
+        std::cout << "Make a choice: ";
+        std::getline(std::cin, choice);
+        return choice;
+    }
+
+    void ShowAppearance() {
+        const std::vector<const char *> menu = {
+                "1 - Show current students",
+                "2 - Add one more student",
+                "3 - Remove last student",
+                "4 - Show active clients",  // TODO:
+                "else - exit"
+        };
+        while (true) {
+            system("clear");
+            auto choice = ShowMenu(menu);
+
+            if (choice.size() == 1 && 0 < choice[0] - '0' && choice[0] - '0' <= 3) {
+                const std::lock_guard<std::mutex> lock(students_mut);
+                switch(choice[0] - '0') {
+                    case 1: {
+                        int index = 0;
+                        students.visitor([&]<class T>(T& item) {
+                            std::cout << '\n' << ++index << ".\n" << item << '\n';
+                        });
+                        break;
+                    }
+                    case 2: {
+                        students.addStudent(students.createStudent());
+                        break;
+                    }
+                    case 3: {
+                        students.removeLastStudent();
+                        break;
+                    }
+                }
+            } else if (choice == "4") {
+                const std::lock_guard<std::mutex> lock(connects_mut);
+                if (connections_info.empty()) {
+                    std::cout << "No connections are available" << std::endl;
+                }
+                for (auto& [id, info] : connections_info) {
+                    info.showInfo();
+                }
+            } else {
+                break;
+            }
+            std::getline(std::cin, choice); // ~ system("pause");
+        }
+    }
 
     void run() {
         std::thread appearance_thread(&Server::ShowAppearance, this);
@@ -163,14 +213,18 @@ private: // required for messages
     Log log;
 
 private: // variables
-    const int PORT = 9984;      // TODO: возможность задать автоматически
+    const int PORT = 9984; 
     const int MAX_QUERIES = 3;
 
     sockaddr_in server_address{}; // server information
     const int address_length = sizeof(server_address);
     int socket_fd = 0;           // file descriptor
 
-    // TODO: thread-safety variable
-    Students students;   // TODO: хранить сразу в JsonCpp
+
+    std::mutex students_mut; // mutex for students
+    std::mutex connects_mut; // mutex for connections
+    
+    std::unordered_map<std::thread::id, ThreadInfo> connections_info;
+    Students students; 
     char buffer[50];    // 50 -> size of a buffer
 };

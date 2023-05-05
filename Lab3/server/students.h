@@ -4,6 +4,7 @@
 #include <vector>
 #include <array>
 #include <algorithm>
+#include <fstream>
 
 #define NAME_TO_STRING(x) #x
 
@@ -16,6 +17,8 @@ static void Input(U hint, T& val) {
 class Students {
 public:
     struct Student {
+        Student() = default;
+
         constexpr static int kSubjectCount = 3;
         constexpr static std::string subjects_names[kSubjectCount] = {"Math", "Physics", "Biology"}; 
 
@@ -37,6 +40,8 @@ public:
         }
     };
 
+    Students() = default;
+
     Student createStudent() const {
         Student tmp;
 
@@ -55,9 +60,10 @@ public:
        data.emplace_back(student); 
     }
 
-    void removeStudent(int index) {
-        std::swap(data[index], data.back());
-        data.pop_back();
+    void removeLastStudent() {
+        if (!data.empty()) {
+            data.pop_back();
+        }
     }
 
     Json::Value findWithoutMark(int mark) {
@@ -85,20 +91,20 @@ public:
         if (data.empty()) {
             lambda("No one exists");
         }
-        for (int i = 0; i < (int)data.size(); ++i) {
-            lambda(data[i]);
+        for (auto& item : data) {
+            lambda(item);
         }
     }
-
+    
 private:
-    std::vector<Student> data; // TODO: хранить сразу в JsonCpp
+    std::vector<Student> data;
 };
 
-
 std::ostream& operator<<(std::ostream& out, const Students::Student& student) {
-    std::cout << NAME_TO_STRING(name) << ": " << student.name << '\n';
-    std::cout << NAME_TO_STRING(group_number) << ": " << student. group_number << '\n';
+    out << NAME_TO_STRING(name) << ": " << student.name << '\n';
+    out << NAME_TO_STRING(group_number) << ": " << student. group_number << '\n';
     for (int i = 0; i < Students::Student::kSubjectCount; ++i) {
-        std::cout << Students::Student::subjects_names[i] << ": " << student.subjects[i] << '\n';
+        out << Students::Student::subjects_names[i] << ": " << student.subjects[i] << '\n';
     }
+    return out;
 }
