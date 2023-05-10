@@ -1,0 +1,271 @@
+
+Listening! Port: 9984 IpAddress: localhost | Wed May 10 12:57:28 2023
+
+Connection established with: 127.0.0.1 | Wed May 10 12:57:30 2023
+
+============== 
+Request: {
+	"mark" : 1
+}
+ -------------- 
+Response: null
+ ============== | Wed May 10 12:57:32 2023
+
+============== 
+Request: {
+	"mark" : 1
+}
+ -------------- 
+Response: null
+ ============== | Wed May 10 12:57:46 2023
+
+============== 
+Request: {
+	"mark" : 5
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 4,
+			"name" : "4",
+			"scholarship" : 4,
+			"subjects" : 
+			[
+				{
+					"Math" : 1
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 3
+				}
+			]
+		}
+	]
+}
+ ============== | Wed May 10 12:57:47 2023
+
+connection lost with: 127.0.0.1 | Wed May 10 12:57:55 2023
+
+Connection established with: 127.0.0.1 | Wed May 10 12:58:00 2023
+
+Connection established with: 127.0.0.1 | Wed May 10 12:58:03 2023
+
+============== 
+Request: {
+	"mark" : 5
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 4,
+			"name" : "4",
+			"scholarship" : 4,
+			"subjects" : 
+			[
+				{
+					"Math" : 1
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 3
+				}
+			]
+		}
+	]
+}
+ ============== | Wed May 10 12:59:00 2023
+
+============== 
+Request: {
+	"mark" : 5
+}
+ -------------- 
+Response: null
+ ============== | Wed May 10 12:59:03 2023
+
+============== 
+Request: {
+	"mark" : 5
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 4,
+			"name" : "4",
+			"scholarship" : 4,
+			"subjects" : 
+			[
+				{
+					"Math" : 1
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 3
+				}
+			]
+		}
+	]
+}
+ ============== | Wed May 10 12:59:07 2023
+
+============== 
+Request: {
+	"mark" : 5
+}
+ -------------- 
+Response: null
+ ============== | Wed May 10 12:59:08 2023
+
+============== 
+Request: {
+	"mark" : 5
+}
+ -------------- 
+Response: null
+ ============== | Wed May 10 12:59:26 2023
+
+============== 
+Request: {
+	"mark" : 5
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 4,
+			"name" : "4",
+			"scholarship" : 4,
+			"subjects" : 
+			[
+				{
+					"Math" : 1
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 3
+				}
+			]
+		}
+	]
+}
+ ============== | Wed May 10 12:59:28 2023
+
+============== 
+Request: {
+	"mark" : 2
+}
+ -------------- 
+Response: null
+ ============== | Wed May 10 12:59:38 2023
+
+============== 
+Request: {
+	"mark" : 2
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 1,
+			"name" : "1",
+			"scholarship" : 1,
+			"subjects" : 
+			[
+				{
+					"Math" : 1
+				},
+				{
+					"Physics" : 1
+				},
+				{
+					"Biology" : 1
+				}
+			]
+		}
+	]
+}
+ ============== | Wed May 10 12:59:40 2023
+
+============== 
+Request: {
+	"mark" : 3
+}
+ -------------- 
+Response: null
+ ============== | Wed May 10 12:59:45 2023
+
+============== 
+Request: {
+	"mark" : 5
+}
+ -------------- 
+Response: null
+ ============== | Wed May 10 12:59:45 2023
+
+
+Listening! Port: 9984 IpAddress: localhost | Wed May 10 13:37:12 2023
+
+forked | Wed May 10 13:37:15 2023
+
+Connection established with: 127.0.0.1 PID: 10803 PORT: 50382 | Wed May 10 13:37:15 2023
+
+forked | Wed May 10 13:37:49 2023
+
+Connection established with: 127.0.0.1 PID: 10808 PORT: 52458 | Wed May 10 13:37:49 2023
+
+============== 
+Request: {
+	"mark" : 1
+}
+ -------------- 
+Response: null
+ ============== | Wed May 10 13:38:13 2023
+
+============== 
+Request: {
+	"mark" : 4
+}
+ -------------- 
+Response: null
+ ============== | Wed May 10 13:38:15 2023
+
+============== 
+Request: {
+	"mark" : 5
+}
+ -------------- 
+Response: null
+ ============== | Wed May 10 13:38:16 2023
+
+============== 
+Request: {
+	"mark" : 6
+}
+ -------------- 
+Response: null
+ ============== | Wed May 10 13:38:17 2023
+
+connection lost with: 127.0.0.1 | Wed May 10 13:38:18 2023
+
+
+Listening! Port: 9984 IpAddress: localhost | Wed May 10 22:50:07 2023
+
+
+Listening! Port: 9984 IpAddress: localhost | Wed May 10 22:53:51 2023
+
