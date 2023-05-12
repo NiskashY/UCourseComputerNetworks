@@ -95,7 +95,7 @@ public:
             lambda(item);
         }
     }
-    
+
 private:
     std::vector<Student> data;
 };

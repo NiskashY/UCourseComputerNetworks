@@ -39,7 +39,7 @@ public:
             group_number = root[NAME_TO_STRING(group_number)].asInt();
             scholarship  = root[NAME_TO_STRING(scholarship)].asInt();
             for (int i = 0; i < kSubjectCount; ++i) {
-                subjects[i] = root[subjects_names[i]].asInt();
+                subjects[i] = root[NAME_TO_STRING(subjects)][i][subjects_names[i]].asInt();
             }
         }
 

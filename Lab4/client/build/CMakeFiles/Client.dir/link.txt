@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/Client.dir/main.cpp.o -o Client   -L/home/mint/GitRepos/UCourseComputerNetworks/Lab3/client/external/vcpkg/packages/jsoncpp_x64-osx/lib  -Wl,-rpath,/home/mint/GitRepos/UCourseComputerNetworks/Lab3/client/external/vcpkg/packages/jsoncpp_x64-osx/lib -ljsoncpp 
+/usr/bin/c++ CMakeFiles/Client.dir/main.cpp.o -o Client   -L/home/mint/GitRepos/UCourseComputerNetworks/Lab4/client/external/vcpkg/packages/jsoncpp_x64-osx/lib  -Wl,-rpath,/home/mint/GitRepos/UCourseComputerNetworks/Lab4/client/external/vcpkg/packages/jsoncpp_x64-osx/lib -ljsoncpp 

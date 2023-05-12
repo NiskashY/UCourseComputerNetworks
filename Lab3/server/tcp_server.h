@@ -46,7 +46,6 @@ public:
         }
 
         log.ShowMessage("\nListening! Port:", PORT, "IpAddress: localhost");
-        students.readFromFile();
     }
 
     ~Server() {
@@ -99,7 +98,7 @@ public:
         
         {
             std::lock_guard<std::mutex> lock(connects_mut);
-            std::thread::id id = std::this_thread::get_id();
+            auto id = std::this_thread::get_id();
             connections_info[id] = ThreadInfo(id, port);
         }
 

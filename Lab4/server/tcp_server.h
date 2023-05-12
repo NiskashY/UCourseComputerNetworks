@@ -92,8 +92,6 @@ public:
                 auto received_mark = ReadJson(new_socket, client_readable_ip);
                 Json::Value response;
 
-                // file locker -> read into students variable
-                // TODO: create a class, that interacts as interface for file locking
                 FileHandler handler(kFileName);
                 Students students(handler.read());
                 response = students.findWithoutMark(received_mark["mark"].asInt());
@@ -163,7 +161,7 @@ public:
                     case 1: {
                         int index = 0;
                         students.visitor([&]<class T>(T& item) {
-                            std::cout << '\n' << ++index << ".\n" << item << '\n';
+                            std::cout << ++index << ".\n" << item << '\n';
                         });
                         break;
                     }

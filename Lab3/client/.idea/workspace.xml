@@ -21,11 +21,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7a0c796-5a0e-49e1-af2b-8254c94d7c01" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/build/Client" beforeDir="false" afterPath="$PROJECT_DIR$/build/Client" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/build/CMakeFiles/Server.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../server/build/CMakeFiles/Server.dir/compiler_depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/build/CMakeFiles/Server.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../server/build/CMakeFiles/Server.dir/compiler_depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/build/Server" beforeDir="false" afterPath="$PROJECT_DIR$/../server/build/Server" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab_3_Otchet.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab_3_Otchet.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/build/logs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../server/build/logs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/students.h" beforeDir="false" afterPath="$PROJECT_DIR$/../server/students.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/tcp_server.h" beforeDir="false" afterPath="$PROJECT_DIR$/../server/tcp_server.h" afterDir="false" />
@@ -52,18 +50,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/mint/GitRepos/UCourseComputerNetworks/Lab3/client/CMakeLists.txt&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/mint/CLionProjects/Practice",
+    "settings.editor.selected.configurable": "configurable.group.build"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Client" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Client" TARGET_NAME="Client" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Client" RUN_TARGET_NAME="Client">
       <method v="2">
@@ -82,6 +80,8 @@
       <workItem from="1683218910187" duration="6474000" />
       <workItem from="1683262326726" duration="1523000" />
       <workItem from="1683270684693" duration="608000" />
+      <workItem from="1683298506312" duration="119000" />
+      <workItem from="1683382707769" duration="19000" />
     </task>
     <servers />
   </component>
