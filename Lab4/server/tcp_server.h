@@ -67,10 +67,8 @@ public:
     auto getClientIp() -> std::string {
         std::string client_readable_ip(INET_ADDRSTRLEN, '\0');
 
-        inet_ntop(server_address.sin_family,
-                  (sockaddr*)&server_address.sin_addr,
-                  client_readable_ip.data(),
-                  client_readable_ip.size());
+        inet_ntop(server_address.sin_family, (sockaddr*)&server_address.sin_addr,
+                  client_readable_ip.data(), client_readable_ip.size());
 
         while (!client_readable_ip.empty() && client_readable_ip.back() == '\0') {
             client_readable_ip.pop_back();
@@ -110,12 +108,7 @@ public:
 
     }
 
-    static void reaper(int sig) {
-        while (wait3(&sig, WNOHANG, (rusage*)nullptr) >= 0);
-    }
-
-    [[noreturn]] void ServerCommunication() {
-        signal(SIGCHLD, reaper);
+    void ServerCommunication() {
         while (true) {
             int new_socket = accept(socket_fd, (sockaddr*)(&server_address), (socklen_t*)&address_length);
             if (new_socket < 0) {
@@ -123,9 +116,12 @@ public:
                 throw std::runtime_error("Error while Accepting on socket");
             }
 
-            if (fork() != 0) {
+            pid_t pid = 0; 
+            if ((pid = fork()) != 0) {
                 log.ShowMessage("forked");
                 ProcessNewClientConnection(new_socket, htons(server_address.sin_port));
+                waitpid(pid, &new_socket, 0); // free resources
+                return;
             }
        }
     }
@@ -137,6 +133,7 @@ public:
         std::string choice;
         std::cout << "Make a choice: ";
         std::getline(std::cin, choice);
+
         return choice;
     }
 
@@ -145,47 +142,32 @@ public:
                 "1 - Show current students",
                 "2 - Add one more student",
                 "3 - Remove last student",
-                "4 - Show active clients",
-                "else - exit"
+                "else - stop Server"
         };
         while (true) {
             system("clear");
             auto choice = ShowMenu(menu);
 
             // file locker -> read to students
-            if (choice.size() == 1 && 0 < choice[0] - '0' && choice[0] - '0' <= 3) {
+            int choiceNumber = choice[0] - '0';
+            if (choice.size() == 1 && 0 < choiceNumber && choiceNumber < (int)menu.size()) {
                 FileHandler handler(kFileName);
-                Students students(handler.read());
+                Students students(handler.read()); // TODO: file is locked, after multiple requests
 
-                switch(choice[0] - '0') {
-                    case 1: {
-                        int index = 0;
-                        students.visitor([&]<class T>(T& item) {
-                            std::cout << ++index << ".\n" << item << '\n';
-                        });
-                        break;
-                    }
-                    case 2: {
-                        students.addStudent(students.createStudent());
-                        break;
-                    }
-                    case 3: {
-                        students.removeLastStudent();
-                        break;
-                    }
+                if (choiceNumber == 1) {
+                    int index = 0;
+                    students.visitor([&]<class T>(T& item) {
+                        std::cout << ++index << ".\n" << item << '\n';
+                    });
+                } else if (choiceNumber == 2) {
+                    students.addStudent(students.createStudent());
+                } else {
+                    students.removeLastStudent();
                 }
 
                 handler.rewriteFile(convertJsonString(students.toJson()));
-            } else if (choice == "4") {
-                /*
-                if (connections_info.empty()) {
-                    std::cout << "No connections are available" << std::endl;
-                }
-                for (auto& [id, info] : connections_info) {
-                    info.showInfo();
-                }
-                */
             } else {
+                std::cout << std::endl << "Bye" << std::endl;
                 break;
             }
             std::getline(std::cin, choice); // ~ system("pause");

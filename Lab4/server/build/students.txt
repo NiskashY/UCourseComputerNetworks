@@ -1,0 +1,22 @@
+{
+	"students" : 
+	[
+		{
+			"group_number" : 1,
+			"name" : "1",
+			"scholarship" : 1,
+			"subjects" : 
+			[
+				{
+					"Math" : 1
+				},
+				{
+					"Physics" : 1
+				},
+				{
+					"Biology" : 1
+				}
+			]
+		}
+	]
+}

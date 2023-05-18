@@ -1,0 +1,9 @@
+
+Listening! Port: 9984 IpAddress: localhost | Thu May 18 20:36:51 2023
+
+forked | Thu May 18 20:36:56 2023
+
+Connection established with: 127.0.0.1 PID: 22233 PORT: 40282 | Thu May 18 20:36:56 2023
+
+connection lost with: 127.0.0.1 | Thu May 18 20:36:58 2023
+
