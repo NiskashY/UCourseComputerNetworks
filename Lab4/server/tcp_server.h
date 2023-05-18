@@ -70,7 +70,7 @@ public:
             }
 
             pid_t pid = 0; 
-            if ((pid = fork()) >= 0) {
+            if ((pid = fork()) == 0) {
                 log.ShowMessage("forked");
                 ProcessNewClientConnection(new_socket, htons(server_address.sin_port));
                 waitpid(pid, &new_socket, 0); // free resources
@@ -146,6 +146,6 @@ private: // variables
     const int address_length = sizeof(server_address);
     int socket_fd = 0;           // file descriptor
 
-    const char* kFileName = "students.txt";
+    const char* kFileName = "/home/mint/GitRepos/UCourseComputerNetworks/Lab4/server/build/students.txt";
     char buffer[50];    // 50 -> size of a buffer
 };

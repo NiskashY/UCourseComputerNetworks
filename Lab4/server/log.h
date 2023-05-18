@@ -5,7 +5,7 @@
 class Log {
 public:
     Log() {
-        out.open("logs.txt", std::ios::app);
+        out.open("/home/mint/GitRepos/UCourseComputerNetworks/Lab4/server/build/logs.txt", std::ios::app);
     }
     explicit Log(const char* filename_) {
         out.open(filename_, std::ios::app);
