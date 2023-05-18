@@ -1,3 +1,0 @@
-/home/mint/GitRepos/UCourseComputerNetworks/Lab4/client/build/CMakeFiles/Client.dir
-/home/mint/GitRepos/UCourseComputerNetworks/Lab4/client/build/CMakeFiles/edit_cache.dir
-/home/mint/GitRepos/UCourseComputerNetworks/Lab4/client/build/CMakeFiles/rebuild_cache.dir
