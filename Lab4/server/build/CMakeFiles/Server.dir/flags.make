@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/mint/GitRepos/vcpkg/packages/jsoncpp_x64-osx/include
+CXX_INCLUDES = -I/home/mint/GitRepos/UCourseComputerNetworks/Lab4/server -I/home/mint/GitRepos/vcpkg/packages/jsoncpp_x64-osx/include
 
 CXX_FLAGS = -std=gnu++20
 

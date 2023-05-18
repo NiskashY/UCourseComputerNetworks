@@ -605,3 +605,414 @@ Response: null
 
 connection lost with: 127.0.0.1 | Thu May 18 20:35:56 2023
 
+
+Listening! Port: 9984 IpAddress: localhost | Thu May 18 21:30:24 2023
+
+
+Listening! Port: 9984 IpAddress: localhost | Thu May 18 21:32:04 2023
+
+forked | Thu May 18 21:32:34 2023
+
+Connection established with: 127.0.0.1 PID: 27582 PORT: 53626 | Thu May 18 21:32:34 2023
+
+============== 
+Request: {
+	"mark" : 1
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 2,
+			"name" : "2",
+			"scholarship" : 2,
+			"subjects" : 
+			[
+				{
+					"Math" : 2
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 2
+				}
+			]
+		}
+	]
+}
+ ============== | Thu May 18 21:33:00 2023
+
+connection lost with: 127.0.0.1 | Thu May 18 21:33:01 2023
+
+forked | Thu May 18 21:33:03 2023
+
+Connection established with: 127.0.0.1 PID: 27619 PORT: 41106 | Thu May 18 21:33:03 2023
+
+============== 
+Request: {
+	"mark" : 5
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 1,
+			"name" : "1",
+			"scholarship" : 1,
+			"subjects" : 
+			[
+				{
+					"Math" : 1
+				},
+				{
+					"Physics" : 1
+				},
+				{
+					"Biology" : 1
+				}
+			]
+		},
+		{
+			"group_number" : 2,
+			"name" : "2",
+			"scholarship" : 2,
+			"subjects" : 
+			[
+				{
+					"Math" : 2
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 2
+				}
+			]
+		}
+	]
+}
+ ============== | Thu May 18 21:33:05 2023
+
+connection lost with: 127.0.0.1 | Thu May 18 21:33:06 2023
+
+forked | Thu May 18 21:34:03 2023
+
+Connection established with: 127.0.0.1 PID: 27622 PORT: 54962 | Thu May 18 21:34:03 2023
+
+============== 
+Request: {
+	"mark" : 1
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 2,
+			"name" : "2",
+			"scholarship" : 2,
+			"subjects" : 
+			[
+				{
+					"Math" : 2
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 2
+				}
+			]
+		}
+	]
+}
+ ============== | Thu May 18 21:34:04 2023
+
+connection lost with: 127.0.0.1 | Thu May 18 21:34:05 2023
+
+
+Listening! Port: 9984 IpAddress: localhost | Thu May 18 21:37:56 2023
+
+forked | Thu May 18 21:38:38 2023
+
+Connection established with: 127.0.0.1 PID: 2646 PORT: 33300 | Thu May 18 21:38:38 2023
+
+connection lost with: 127.0.0.1 | Thu May 18 21:39:30 2023
+
+
+Listening! Port: 9984 IpAddress: localhost | Thu May 18 21:43:49 2023
+
+forked | Thu May 18 21:43:52 2023
+
+Connection established with: 127.0.0.1 PID: 3843 PORT: 47364 | Thu May 18 21:43:52 2023
+
+connection lost with: 127.0.0.1 | Thu May 18 21:44:07 2023
+
+
+Listening! Port: 9984 IpAddress: localhost | Thu May 18 21:48:40 2023
+
+forked | Thu May 18 21:48:42 2023
+
+Connection established with: 127.0.0.1 PID: 4425 PORT: 41462 | Thu May 18 21:48:42 2023
+
+============== 
+Request: {
+	"mark" : 1
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 2,
+			"name" : "2",
+			"scholarship" : 2,
+			"subjects" : 
+			[
+				{
+					"Math" : 2
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 2
+				}
+			]
+		}
+	]
+}
+ ============== | Thu May 18 21:48:52 2023
+
+============== 
+Request: {
+	"mark" : 8
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 1,
+			"name" : "1",
+			"scholarship" : 1,
+			"subjects" : 
+			[
+				{
+					"Math" : 1
+				},
+				{
+					"Physics" : 1
+				},
+				{
+					"Biology" : 1
+				}
+			]
+		},
+		{
+			"group_number" : 2,
+			"name" : "2",
+			"scholarship" : 2,
+			"subjects" : 
+			[
+				{
+					"Math" : 2
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 2
+				}
+			]
+		}
+	]
+}
+ ============== | Thu May 18 21:48:55 2023
+
+connection lost with: 127.0.0.1 | Thu May 18 21:48:56 2023
+
+
+Listening! Port: 9984 IpAddress: localhost | Thu May 18 21:52:58 2023
+
+forked | Thu May 18 21:53:00 2023
+
+Connection established with: 127.0.0.1 PID: 4733 PORT: 60918 | Thu May 18 21:53:00 2023
+
+============== 
+Request: {
+	"mark" : 1
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 2,
+			"name" : "2",
+			"scholarship" : 2,
+			"subjects" : 
+			[
+				{
+					"Math" : 2
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 2
+				}
+			]
+		}
+	]
+}
+ ============== | Thu May 18 21:53:22 2023
+
+connection lost with: 127.0.0.1 | Thu May 18 21:53:23 2023
+
+
+Listening! Port: 9984 IpAddress: localhost | Thu May 18 21:57:02 2023
+
+forked | Thu May 18 21:57:04 2023
+
+Connection established with: 127.0.0.1 PID: 5363 PORT: 33882 | Thu May 18 21:57:04 2023
+
+============== 
+Request: {
+	"mark" : 1
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 2,
+			"name" : "2",
+			"scholarship" : 2,
+			"subjects" : 
+			[
+				{
+					"Math" : 2
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 2
+				}
+			]
+		}
+	]
+}
+ ============== | Thu May 18 21:57:05 2023
+
+============== 
+Request: {
+	"mark" : 1
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 2,
+			"name" : "2",
+			"scholarship" : 2,
+			"subjects" : 
+			[
+				{
+					"Math" : 2
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 2
+				}
+			]
+		}
+	]
+}
+ ============== | Thu May 18 21:57:06 2023
+
+============== 
+Request: {
+	"mark" : 1
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 2,
+			"name" : "2",
+			"scholarship" : 2,
+			"subjects" : 
+			[
+				{
+					"Math" : 2
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 2
+				}
+			]
+		}
+	]
+}
+ ============== | Thu May 18 21:57:06 2023
+
+connection lost with: 127.0.0.1 | Thu May 18 21:57:07 2023
+
+forked | Thu May 18 21:57:18 2023
+
+Connection established with: 127.0.0.1 PID: 5375 PORT: 50464 | Thu May 18 21:57:18 2023
+
+forked | Thu May 18 21:58:05 2023
+
+Connection established with: 127.0.0.1 PID: 5403 PORT: 57694 | Thu May 18 21:58:05 2023
+
+connection lost with: 127.0.0.1 | Thu May 18 21:58:12 2023
+
+connection lost with: 127.0.0.1 | Thu May 18 21:58:12 2023
+
+forked | Thu May 18 22:00:25 2023
+
+Connection established with: 127.0.0.1 PID: 5719 PORT: 58966 | Thu May 18 22:00:25 2023
+
+============== 
+Request: {
+	"mark" : 1
+}
+ -------------- 
+Response: {
+	"students" : 
+	[
+		{
+			"group_number" : 2,
+			"name" : "2",
+			"scholarship" : 2,
+			"subjects" : 
+			[
+				{
+					"Math" : 2
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 2
+				}
+			]
+		}
+	]
+}
+ ============== | Thu May 18 22:00:38 2023
+
+connection lost with: 127.0.0.1 | Thu May 18 22:00:44 2023
+

@@ -17,6 +17,23 @@
 					"Biology" : 1
 				}
 			]
+		},
+		{
+			"group_number" : 2,
+			"name" : "2",
+			"scholarship" : 2,
+			"subjects" : 
+			[
+				{
+					"Math" : 2
+				},
+				{
+					"Physics" : 2
+				},
+				{
+					"Biology" : 2
+				}
+			]
 		}
 	]
 }

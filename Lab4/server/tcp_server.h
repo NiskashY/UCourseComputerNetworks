@@ -3,7 +3,7 @@
 #include <string>
 
 // process
-#include <sys/types.h>
+#include <sys/>
 #include <sys/signal.h>
 #include <sys/wait.h>
 #include <unistd.h>
@@ -53,6 +53,33 @@ public:
     ~Server() {
         close(socket_fd);
     }
+
+    static void reaper(int sig) {
+        while (wait3(&sig, WNOHANG, (struct rusage*)0) >= 0);
+    }
+
+    void run() {
+        std::cout << "Server is working..." << std::endl;
+        
+        (void)signal(SIGCHLD, reaper);
+        while (true) {
+            int new_socket = accept(socket_fd, (sockaddr*)(&server_address), (socklen_t*)&address_length);
+            if (new_socket < 0) {
+                close(new_socket);
+                throw std::runtime_error("Error while Accepting on socket");
+            }
+
+            pid_t pid = 0; 
+            if ((pid = fork()) >= 0) {
+                log.ShowMessage("forked");
+                ProcessNewClientConnection(new_socket, htons(server_address.sin_port));
+                waitpid(pid, &new_socket, 0); // free resources
+                return;
+            }
+       }
+    }
+
+private:     // functions
 
     Json::Value ReadJson(const int& new_socket, const std::string& client_readable_ip) {
         size_t buf_size = sizeof(buffer);
@@ -106,80 +133,6 @@ public:
             }
         }
 
-    }
-
-    void ServerCommunication() {
-        while (true) {
-            int new_socket = accept(socket_fd, (sockaddr*)(&server_address), (socklen_t*)&address_length);
-            if (new_socket < 0) {
-                close(new_socket);
-                throw std::runtime_error("Error while Accepting on socket");
-            }
-
-            pid_t pid = 0; 
-            if ((pid = fork()) != 0) {
-                log.ShowMessage("forked");
-                ProcessNewClientConnection(new_socket, htons(server_address.sin_port));
-                waitpid(pid, &new_socket, 0); // free resources
-                return;
-            }
-       }
-    }
-
-    auto ShowMenu(const auto& menu) -> std::string {
-        for (auto item : menu) {
-            std::cout << item << std::endl;
-        }
-        std::string choice;
-        std::cout << "Make a choice: ";
-        std::getline(std::cin, choice);
-
-        return choice;
-    }
-
-    void ShowAppearance() {
-        const std::vector<const char *> menu = {
-                "1 - Show current students",
-                "2 - Add one more student",
-                "3 - Remove last student",
-                "else - stop Server"
-        };
-        while (true) {
-            system("clear");
-            auto choice = ShowMenu(menu);
-
-            // file locker -> read to students
-            int choiceNumber = choice[0] - '0';
-            if (choice.size() == 1 && 0 < choiceNumber && choiceNumber < (int)menu.size()) {
-                FileHandler handler(kFileName);
-                Students students(handler.read()); // TODO: file is locked, after multiple requests
-
-                if (choiceNumber == 1) {
-                    int index = 0;
-                    students.visitor([&]<class T>(T& item) {
-                        std::cout << ++index << ".\n" << item << '\n';
-                    });
-                } else if (choiceNumber == 2) {
-                    students.addStudent(students.createStudent());
-                } else {
-                    students.removeLastStudent();
-                }
-
-                handler.rewriteFile(convertJsonString(students.toJson()));
-            } else {
-                std::cout << std::endl << "Bye" << std::endl;
-                break;
-            }
-            std::getline(std::cin, choice); // ~ system("pause");
-        }
-    }
-
-    void run() {
-        std::thread appearance_thread(&Server::ShowAppearance, this);
-        std::thread server_communication_thread(&Server::ServerCommunication, this);
-
-        appearance_thread.join();
-        server_communication_thread.join();
     }
 
 private: // required for messages

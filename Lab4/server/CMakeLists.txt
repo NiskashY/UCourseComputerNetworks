@@ -3,7 +3,11 @@ project(Server)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Server main.cpp combinatorics.h tcp_server.h log.h)
+include_directories(${PROJECT_SOURCE_DIR})
+file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/*.cpp)
+
+add_executable(${PROJECT_NAME} ${SRC_FILES})
+
 #--------------JSONCPP------------------
 
 set(JSON_INC_PATH /home/mint/GitRepos/vcpkg/packages/jsoncpp_x64-osx/include)
