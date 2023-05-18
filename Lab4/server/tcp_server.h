@@ -3,7 +3,7 @@
 #include <string>
 
 // process
-#include <sys/>
+#include <sys/types.h>
 #include <sys/signal.h>
 #include <sys/wait.h>
 #include <unistd.h>
