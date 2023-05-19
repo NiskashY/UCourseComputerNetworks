@@ -73,8 +73,11 @@ public:
             if ((pid = fork()) == 0) {
                 log.ShowMessage("forked");
                 ProcessNewClientConnection(new_socket, htons(server_address.sin_port));
+                close(new_socket);
                 waitpid(pid, &new_socket, 0); // free resources
                 return;
+            } else {
+                close(new_socket);
             }
        }
     }
