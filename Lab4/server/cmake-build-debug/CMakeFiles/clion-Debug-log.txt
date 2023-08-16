@@ -1,0 +1,4 @@
+/var/lib/snapd/snap/clion/237/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/mint/GitRepos/UCourseComputerNetworks/Lab4/server -B /home/mint/GitRepos/UCourseComputerNetworks/Lab4/server/cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/mint/GitRepos/UCourseComputerNetworks/Lab4/server/cmake-build-debug
